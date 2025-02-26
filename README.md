@@ -74,6 +74,14 @@ curl -X GET http://localhost:8000/item/1
 </html>
 ``
 
+## Стек используемых технологий
+
+ - **Python 3.12+**
+ - **Django 5.2+** (включая Django ORM для работы с базой данных)
+ - **Django Rest Framework 3.15.2** (для API)
+ - **HTML/CSS/JavaScript** (для базового пользовательского интерфейса)
+ - **Bootstrap 5** (для стилизации)
+ - **SQLite/PostgreSQL** (для хранения данных)
 
 ## Развертывание проекта.
 1. Склонировать репозиторий:
@@ -114,16 +122,22 @@ DjangoStripePayment выполнить следующие действия:
    ```python
    DJANGO_SECRET_KEY='тут_сгенерированный_ключ'
    ```
-8. Создать и выполнить миграции:
+8. Зарегистрироваться на сайте платежной системы Stripe. Получить публичный и
+секретный ключи. Скопировать полученные ключи в файл .env:
+   ```python
+   STRIPE_PUBLIC='публичный_ключ'
+   STRIPE_SECRET='секретный_ключ'
+   ```
+9. Создать и выполнить миграции:
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
-9. Создать суперпользователя:
+10. Создать суперпользователя:
    ```bash
    python manage.py createsuperuser
    ```
-10. Запустить сервер приложения:
+11. Запустить сервер приложения:
    ```bash
    python manage.py runserver
    ```
