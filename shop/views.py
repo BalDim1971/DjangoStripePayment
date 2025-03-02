@@ -5,15 +5,14 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from config.settings import STRIPE_PUBLIC
 from .models import Item
-from .services import create_stripe_checkout_session
+from .services import create_stripe_session
 
 logger = logging.getLogger('item')
 
 
 class ItemDetailView(GenericAPIView):
     """
-    Detail view for item.
-    Return html page with buy button.
+    Детальный просмотр данных о товаре.
     """
     def get(self, request, pk):
         item = get_object_or_404(Item, pk=pk)
@@ -22,10 +21,10 @@ class ItemDetailView(GenericAPIView):
 
 class ItemBuyView(GenericAPIView):
     """
-    Returns session id of item when user adds it to checkout stripe session.
+    Возвращает идентификатор сессии покупки товара.
     """
     def get(self, request, pk):
         item = get_object_or_404(Item, pk=pk)
-        session = create_stripe_checkout_session(item)
+        session = create_stripe_session(item)
         logger.info(f'checkout session for {item} is {session.id}')
         return Response({"session_id": session.id})

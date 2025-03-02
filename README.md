@@ -129,6 +129,8 @@ DjangoStripePayment выполнить следующие действия:
    STRIPE_PUBLIC='публичный_ключ'
    STRIPE_SECRET='секретный_ключ'
    ```
+   Дополнительно, есть параметр STRIPE_URL, содержащий адрес и порт сервера.
+По умолчанию, http://localhost:8000
 9. Создать и выполнить миграции:
    ```bash
    python manage.py makemigrations

@@ -18,6 +18,7 @@ class ItemAdmin(admin.ModelAdmin):
     
     @admin.display(description='Краткое описание товара')
     def description_info(self, item: Item) -> str:
-        return (f'Краткое описание товара: '
-                f'{truncatechars(item.description, 35)}'
-                )
+        return (
+            f'Краткое описание товара: '
+            f'{truncatechars(item.description, 35)}'
+            )
